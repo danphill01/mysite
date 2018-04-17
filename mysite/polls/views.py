@@ -29,6 +29,13 @@ class DetailView(generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.now())
 
 
+class ChoiceDetailView(generic.DetailView):
+    model = Choice
+    #template_name allows us to override the default template "polls/choice_detail.html"
+    template_name = 'polls/choice_detail.html'
+    #auto generated context_object_name is 'choice', which is what we want
+
+
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'

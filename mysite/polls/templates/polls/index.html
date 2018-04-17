@@ -1,9 +1,23 @@
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+{% extends "layout.html" %}
+
+{% block title %}Available Questions{% endblock %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+{% block content %}
+<div class="cards">
+    {% if latest_question_list %}
+        {% for question in latest_question_list %}
+        <div class="card">
+            <header><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></header>
+            <div class="card-copy">
+                {{ question.pub_date }}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</div>
+{% endblock %}

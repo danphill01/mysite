@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ choice.choice_text }} - {{ choice.question.question_text}}{% endblock %} 
+
+{% block content %}
+<article>
+    <h2>
+        <a href="{% url 'polls:detail' pk=choice.question.id %}">{{ choice.question.question_text }}</a>
+    </h2>
+    <h3>{{ choice.choice_text }}</h3>
+    {{ choice.content|linebreaks }}
+</article>
+{% endblock %}
