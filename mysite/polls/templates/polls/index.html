@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
+{% load static from staticfiles %}
 
+{% block static %}<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />{% endblock %}
 {% block title %}Available Questions{% endblock %}
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 
 {% block content %}
 <div class="cards">
