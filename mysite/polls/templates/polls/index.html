@@ -12,7 +12,13 @@
         <div class="card">
             <header><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></header>
             <div class="card-copy">
-                {{ question.pub_date }}
+                {% if question.description|wordcount <= 5 %}
+                    <p>{{ question.description }}</p>
+                {% else %}
+                    <p>{{ question.description|truncatewords:5 }}<br>
+                    <a href="{% url 'polls:detail' question.id %}">read more</a></p>
+                {% endif %}
+                <div>Created on: {{ question.pub_date|date:"F j, Y" }}</div>
             </div>
         </div>
         {% endfor %}
