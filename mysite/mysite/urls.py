@@ -23,6 +23,7 @@ from . import views
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
+    path('suggest/', views.suggestion_view, name='suggestion'),
     path('', views.homepage, name="homepage"),
 ]
 

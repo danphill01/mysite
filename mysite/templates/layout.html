@@ -13,6 +13,11 @@
                 <a href="{% url 'homepage' %}">Home</a>
                 <a href="{% url 'polls:index' %}">Questions</a>
             </nav>
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
             {% block content %}{% endblock %}
         </div>
     </body>
